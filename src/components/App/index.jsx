@@ -1,10 +1,16 @@
 import React from "react";
+import MainContainer from "../../containers/MainContainer/index";
+// Components
+import History from "../History/index";
+import Form from "../Form/index";
 
 const index = () => {
   return (
-    <div>
-      <h1>MoneyTrackerApp</h1>
-    </div>
+    <MainContainer>
+      <History />
+      <Form />
+      <h1>Charts</h1>
+    </MainContainer>
   );
 };
 
