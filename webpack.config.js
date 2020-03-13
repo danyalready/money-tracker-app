@@ -16,6 +16,11 @@ module.exports = {
         exclude: "/node_modules"
       },
       {
+        test: /\.(png|jpg)$/,
+        use: "file-loader",
+        exclude: "/node_modules"
+      },
+      {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
         exclude: "/node_modules"
