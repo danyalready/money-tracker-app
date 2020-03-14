@@ -10,8 +10,7 @@ export const Stick = styled.div`
   transform: translateY(-50%);
   width: 1px;
   height: 80%;
-  background: #37474f;
-  opacity: 0.4;
+  background: #aaa;
 `;
 
 export const FormSubContainer = styled.div`
@@ -44,14 +43,14 @@ export const Img = styled.img`
 
 export const Form = styled.form`
   position: relative;
-  width: 95%;
+  width: 100%;
   height: 400px;
   background: #eee;
   border-radius: 5px;
   color: #37474f;
 `;
 export const Header = styled.div`
-  margin: 7px 0;
+  margin: 8px 0;
   display: grid;
   grid-template-columns: 30% 40% 30%;
 
@@ -85,15 +84,17 @@ export const Input = styled.input`
   padding: 5px;
 `;
 export const Description = styled.textarea`
-  width: 100%;
-  height: 60px;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 60px;
+  max-height: 255px;
   padding: 5px;
   border: 1px solid #aaa;
   border-radius: 5px;
 `;
 export const Button = styled.button`
   cursor: pointer;
-  margin: 7px 0;
+  margin: 8px 0;
   width: 100%;
   height: 40px;
   border: none;

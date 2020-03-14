@@ -23,7 +23,7 @@ const index = ({ addTransaction }) => {
   const [type, setType] = useState(null);
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState("");
   const [description, setDescription] = useState("");
 
   const typeHandle = event => setType(event);
