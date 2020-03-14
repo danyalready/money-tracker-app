@@ -34,9 +34,12 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "dateformat": "^3.0.3",
+    "prop-types": "^15.7.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-redux": "^7.2.0",
+    "react-select": "^3.0.8",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
