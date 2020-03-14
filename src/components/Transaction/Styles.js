@@ -9,6 +9,18 @@ export const Transaction = styled.div`
   display: flex;
   align-items: center;
   color: #37474f;
+  animation: appear 0.4s ease-in-out;
+
+  @keyframes appear {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 `;
 
 export const Stick = styled.div`
