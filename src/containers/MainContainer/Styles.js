@@ -6,7 +6,6 @@ export const MainContaiener = styled.div`
   left: 50%;
   transform: translateX(-50%);
 
-  margin: 15px;
   width: 1200px;
   height: 700px;
   background: #fff;
