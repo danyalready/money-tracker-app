@@ -1,10 +1,16 @@
 import styled from "styled-components";
 
 export const Transaction = styled.div`
+  cursor: pointer;
   margin: 5px 0;
   height: 60px;
   background: #eee;
   border-radius: 5px;
+  transition: all 0.05s ease;
+  &:hover {
+    box-shadow: 0 0 5px 1px #bbdefb;
+    transform: scale(101%);
+  }
 
   display: flex;
   align-items: center;
