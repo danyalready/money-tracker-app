@@ -15,26 +15,37 @@ const index = ({ transactions }) => {
     array.map(a => {
       amounts.push(a.amount);
     });
-    return amounts.reduce((a, c) => Number(a) + Number(c));
+    if (amounts.length > 1)
+      return amounts.reduce((a, c) => Number(a) + Number(c));
+    return Number(amounts);
   };
-
   const options = {
+    title: {
+      text: `Total: ${sum(profit) - sum(expense)}`
+    },
     series: [sum(profit), sum(expense)],
-    labels: ["Profit", "Expense"],
+    labels: [`Profit ${sum(profit)}`, `Expense ${sum(expense)}`],
     colors: ["#64dd17", "#f44336"],
     chart: {
       type: "donut"
+    },
+    plotOptions: {
+      pie: {
+        customScale: 0.8,
+        donut: {
+          size: "75%"
+        }
+      }
     }
   };
 
   return (
     <PieChartContainer>
-      <Title>Total:</Title>
       <Chart
         options={options}
         series={options.series}
         type="donut"
-        width="97%"
+        width="100%"
       />
     </PieChartContainer>
   );
