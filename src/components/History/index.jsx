@@ -2,15 +2,24 @@ import React from "react";
 import { History } from "./Styles";
 import Transaction from "../Transaction/index";
 
-const Transactions = ({ transactions }) =>
+const Transactions = ({ transactions, trigger, setTransaction }) =>
   transactions.map(transaction => (
-    <Transaction key={transaction.id} transaction={transaction} />
+    <Transaction
+      key={transaction.id}
+      transaction={transaction}
+      trigger={trigger}
+      setTransaction={setTransaction}
+    />
   ));
 
-const index = ({ transactions }) => {
+const index = ({ transactions, trigger, setTransaction }) => {
   return (
     <History>
-      <Transactions transactions={transactions} />
+      <Transactions
+        transactions={transactions}
+        trigger={trigger}
+        setTransaction={setTransaction}
+      />
     </History>
   );
 };
