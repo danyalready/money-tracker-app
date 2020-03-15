@@ -53,6 +53,12 @@ const index = ({ addTransaction }) => {
       return console.log("ERROR: Fill the date field!");
     }
     addTransaction(transaction);
+
+    setType(null);
+    setName("");
+    setDate("");
+    setAmount("");
+    setDescription("");
   };
 
   const styles = {
