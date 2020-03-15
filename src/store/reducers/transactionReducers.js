@@ -1,4 +1,9 @@
-import { SET_LOADING, ADD_TRANSACTION } from "../types";
+import {
+  SET_LOADING,
+  ADD_TRANSACTION,
+  SET_TRANSACTION,
+  DELETE_TRANSACTION
+} from "../types";
 
 const initialState = {
   loading: false,
@@ -35,7 +40,8 @@ const initialState = {
       type: "profit",
       id: 541522257
     }
-  ]
+  ],
+  transaction: {}
 };
 
 export const transactionReducers = (state = initialState, action) => {
@@ -48,8 +54,19 @@ export const transactionReducers = (state = initialState, action) => {
     case ADD_TRANSACTION:
       return {
         ...state,
-        transactions: [action.payload, ...state.transactions],
-        loading: false
+        transactions: [action.payload, ...state.transactions]
+      };
+    case SET_TRANSACTION:
+      return {
+        ...state,
+        transaction: action.payload
+      };
+    case DELETE_TRANSACTION:
+      return {
+        ...state,
+        transactions: state.transactions.filter(
+          transaction => transaction.id !== action.payload
+        )
       };
     default:
       return state;
