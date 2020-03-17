@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export const Profile = styled.div`
   position: relative;
@@ -53,12 +52,9 @@ export const Email = styled.div`
 
 export const Authenticate = styled.div``;
 
-export const StyledLink = styled(Link)`
-  text-decoration: none;
+export const Button = styled.button`
+  cursor: pointer;
+  border: none;
+  color: #62727b;
   margin-right: 10px;
-  font-size: 14px;
-  color: #37474f;
-  &:hover {
-    opacity: 0.7;
-  }
 `;

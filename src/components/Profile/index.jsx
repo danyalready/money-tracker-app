@@ -7,10 +7,11 @@ import {
   Fullname,
   Email,
   Authenticate,
-  StyledLink
+  Button
 } from "./Styles";
 
-const index = () => {
+const index = ({ trigger }) => {
+  console.log(trigger);
   return (
     <Profile>
       <Photo></Photo>
@@ -20,8 +21,8 @@ const index = () => {
           <Email></Email>
         </About>
         <Authenticate>
-          <StyledLink to="/login">Login</StyledLink>
-          <StyledLink to="/register">Register</StyledLink>
+          <Button onClick={() => trigger("login")}>Login</Button>
+          <Button onClick={() => trigger("register")}>Register</Button>
         </Authenticate>
       </ProfileDetails>
     </Profile>

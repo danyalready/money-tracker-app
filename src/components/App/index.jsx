@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MainContainer from "../../containers/MainContainer/index";
 import ChartsContainer from "../../containers/ChartsContainer/index";
 import CentralContainer from "../../containers/CentralContainer/index";
@@ -11,6 +10,8 @@ import {
   setTransaction,
   deleteTransaction
 } from "../../store/actions/transactionActions";
+// Authenticate
+import Authenticate from "../Authenticate/index";
 // Components
 import Form from "../Form/index";
 import Popup from "../Popup/index";
@@ -28,34 +29,46 @@ const index = ({
   transaction
 }) => {
   const [popup, setPopup] = useState(false);
-  // const [link, setLink] = useState(false);
   const toggle = () => setPopup(!popup);
-  // const toggleLink = () => setLink(!link);
+  const [popupAuth, setPopupAuth] = useState({
+    show: false,
+    type: null
+  });
+  const toggleAuth = authType =>
+    setPopupAuth(prevState => ({
+      show: !prevState.show,
+      type: authType
+    }));
   return (
-    <Router>
-      <MainContainer>
-        <Background show={popup} trigger={toggle} />
-        <Popup
-          show={popup}
-          trigger={toggle}
-          transaction={transaction}
-          deleteTransaction={deleteTransaction}
-        />
-        <History
-          transactions={transactions}
-          trigger={toggle}
-          setTransaction={setTransaction}
-        />
-        <CentralContainer>
-          <Profile />
-          <Form addTransaction={addTransaction} />
-        </CentralContainer>
-        <ChartsContainer>
-          <PieChart transactions={transactions} />
-          <LineChart transactions={transactions} />
-        </ChartsContainer>
-      </MainContainer>
-    </Router>
+    <MainContainer>
+      <Background show={popup} trigger={toggle} />
+      <Popup
+        show={popup}
+        trigger={toggle}
+        transaction={transaction}
+        deleteTransaction={deleteTransaction}
+      />
+
+      <Authenticate
+        show={popupAuth.show}
+        type={popupAuth.type}
+        trigger={toggleAuth}
+      />
+
+      <History
+        transactions={transactions}
+        trigger={toggle}
+        setTransaction={setTransaction}
+      />
+      <CentralContainer>
+        <Profile trigger={toggleAuth} />
+        <Form addTransaction={addTransaction} />
+      </CentralContainer>
+      <ChartsContainer>
+        <PieChart transactions={transactions} />
+        <LineChart transactions={transactions} />
+      </ChartsContainer>
+    </MainContainer>
   );
 };
 
