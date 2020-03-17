@@ -4,41 +4,8 @@ export const FormContainer = styled.div`
   color: #37474f;
 `;
 
-export const Stick = styled.div`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1px;
-  height: 80%;
-  background: #aaa;
-`;
-
 export const FormSubContainer = styled.div`
   margin: 15px;
-`;
-
-export const Logo = styled.div`
-  position: relative;
-  width: 100%;
-  height: 200px;
-
-  display: flex;
-  justify-content: center;
-`;
-
-export const Img = styled.img`
-  width: 150px;
-  height: 150px;
-  animation: fly 2s ease-in-out alternate infinite;
-
-  @keyframes fly {
-    from {
-      transform: translateY(40px);
-    }
-    to {
-      transform: translateY(0);
-    }
-  }
 `;
 
 export const Form = styled.form`

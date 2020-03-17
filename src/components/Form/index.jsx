@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import {
-  FormContainer,
-  Stick,
-  FormSubContainer,
-  Logo,
-  Img,
   Form,
-  Header,
   Input,
+  Button,
+  Header,
   Description,
-  Button
+  FormContainer,
+  FormSubContainer
 } from "./Styles";
-import monster from "../../static/images/monster.png";
 
 const index = ({ addTransaction }) => {
   const options = [
@@ -79,11 +75,7 @@ const index = ({ addTransaction }) => {
 
   return (
     <FormContainer>
-      <Stick />
       <FormSubContainer>
-        <Logo>
-          <Img alt="logo" src={monster} />
-        </Logo>
         <Form onSubmit={submitHandle}>
           <Select
             styles={styles}

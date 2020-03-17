@@ -11,6 +11,7 @@ export const MainContaiener = styled.div`
   background: #fff;
   border-radius: 5px;
   box-shadow: 0 0 10px 1px #2a2a2a;
+  overflow: hidden;
 
   display: grid;
   grid-template-columns: 30% 30% 40%;

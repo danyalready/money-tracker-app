@@ -1,5 +1,5 @@
 import React from "react";
-import { Title, PieChartContainer } from "./Styles";
+import { PieChartContainer } from "./Styles";
 import Chart from "react-apexcharts";
 
 const index = ({ transactions }) => {
@@ -12,23 +12,17 @@ const index = ({ transactions }) => {
 
   const sum = array => {
     let amounts = [];
-    array.map(a => {
-      amounts.push(a.amount);
-    });
+    array.map(a => amounts.push(a.amount));
     if (amounts.length > 1)
       return amounts.reduce((a, c) => Number(a) + Number(c));
     return Number(amounts);
   };
   const options = {
-    title: {
-      text: `Total: ${sum(profit) - sum(expense)}`
-    },
+    title: { text: `Total: ${sum(profit) - sum(expense)}` },
     series: [sum(profit), sum(expense)],
     labels: [`Profit ${sum(profit)}`, `Expense ${sum(expense)}`],
     colors: ["#64dd17", "#f44336"],
-    chart: {
-      type: "donut"
-    },
+    chart: { type: "donut" },
     plotOptions: {
       pie: {
         customScale: 0.8,
