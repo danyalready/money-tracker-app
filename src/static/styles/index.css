@@ -3,6 +3,16 @@
   padding: 0;
   box-sizing: border-box;
 }
+*:focus {
+  border: 0;
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
 
 body {
   font-family: sans-serif;
