@@ -1,0 +1,82 @@
+[debug] [2020-03-18T17:03:10.627Z] ----------------------------------------------------------------------
+[debug] [2020-03-18T17:03:10.628Z] Command:       /usr/bin/node /usr/local/bin/firebase serve
+[debug] [2020-03-18T17:03:10.628Z] CLI Version:   7.14.0
+[debug] [2020-03-18T17:03:10.628Z] Platform:      linux
+[debug] [2020-03-18T17:03:10.628Z] Node Version:  v13.11.0
+[debug] [2020-03-18T17:03:10.629Z] Time:          Wed Mar 18 2020 13:03:10 GMT-0400 (Eastern Daylight Time)
+[debug] [2020-03-18T17:03:10.629Z] ----------------------------------------------------------------------
+[debug] [2020-03-18T17:03:10.629Z] 
+[debug] [2020-03-18T17:03:10.633Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-03-18T17:03:10.633Z] > authorizing via signed-in user
+[debug] [2020-03-18T17:03:10.633Z] [iam] checking project moneytrackerapp-0000 for permissions ["firebase.projects.get"]
+[debug] [2020-03-18T17:03:10.634Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/moneytrackerapp-0000:testIamPermissions  
+
+[debug] [2020-03-18T17:03:12.049Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-18T17:03:12.054Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/moneytrackerapp-0000  
+ 
+[debug] [2020-03-18T17:03:12.659Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/dany/Workplace/MoneyTrackerApp'...
+[info] 
+[warn] ⚠  Your requested "node" version "8" doesn't match your global version "13"
+[info] ✔  functions: functions emulator started at http://localhost:5000
+[info] i  functions: Watching "/home/dany/Workplace/MoneyTrackerApp/functions" for Cloud Functions...
+[debug] [2020-03-18T17:03:12.696Z] [worker-pool] addWorker(~diagnostic~)
+[debug] [2020-03-18T17:03:12.696Z] [worker-pool] Adding worker with key ~diagnostic~, total=1
+[debug] [2020-03-18T17:03:12.696Z] [worker-pool] submitWork(triggerId=)
+[debug] [2020-03-18T17:03:12.697Z] [worker-~diagnostic~-e68428f2-f0e2-4d6c-afeb-5958b9ef0873]: Assigning socketPath: /tmp/fire_emu_5962.sock
+[debug] [2020-03-18T17:03:12.697Z] [worker-~diagnostic~-e68428f2-f0e2-4d6c-afeb-5958b9ef0873]: BUSY
+[debug] [2020-03-18T17:03:12.918Z] [runtime-status] [5962] Functions runtime initialized. {"cwd":"/home/dany/Workplace/MoneyTrackerApp/functions","node_version":"13.11.0"}
+[debug] [2020-03-18T17:03:12.918Z] [runtime-status] [5962] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true,"pubsub_emulator":true}
+[debug] [2020-03-18T17:03:12.920Z] [runtime-status] [5962] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/home/dany/Workplace/MoneyTrackerApp/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2020-03-18T17:03:12.920Z] [runtime-status] [5962] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/home/dany/Workplace/MoneyTrackerApp/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2020-03-18T17:03:12.921Z] [runtime-status] [5962] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/home/dany/Workplace/MoneyTrackerApp/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  Error: Cannot find module '../config/serviceAccountKey.json'
+Require stack:
+- /home/dany/Workplace/MoneyTrackerApp/functions/utils/admin.js
+- /home/dany/Workplace/MoneyTrackerApp/functions/handlers/users.js
+- /home/dany/Workplace/MoneyTrackerApp/functions/index.js
+- /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:976:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:859:27)
+    at Module.require (internal/modules/cjs/loader.js:1036:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at Object.<anonymous> (/home/dany/Workplace/MoneyTrackerApp/functions/utils/admin.js:3:22)
+    at Module._compile (internal/modules/cjs/loader.js:1147:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1167:10)
+    at Module.load (internal/modules/cjs/loader.js:996:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:896:14)
+    at Module.require (internal/modules/cjs/loader.js:1036:19)
+[warn] ⚠  We were unable to load your functions code. (see above)
+[debug] [2020-03-18T17:03:13.007Z] [worker-~diagnostic~-e68428f2-f0e2-4d6c-afeb-5958b9ef0873]: exited
+[debug] [2020-03-18T17:03:13.007Z] [worker-~diagnostic~-e68428f2-f0e2-4d6c-afeb-5958b9ef0873]: FINISHED
+[debug] [2020-03-18T17:03:54.155Z] File /home/dany/Workplace/MoneyTrackerApp/functions/utils/admin.js changed, reloading triggers
+[debug] [2020-03-18T17:03:55.157Z] [worker-pool] Cleaned up workers for ~diagnostic~: 1 --> 0
+[debug] [2020-03-18T17:03:55.164Z] [worker-pool] addWorker(~diagnostic~)
+[debug] [2020-03-18T17:03:55.165Z] [worker-pool] Adding worker with key ~diagnostic~, total=1
+[debug] [2020-03-18T17:03:55.165Z] [worker-pool] submitWork(triggerId=)
+[debug] [2020-03-18T17:03:55.165Z] [worker-~diagnostic~-b03a3947-6813-48a4-964f-2fce4fc029f8]: Assigning socketPath: /tmp/fire_emu_6022.sock
+[debug] [2020-03-18T17:03:55.165Z] [worker-~diagnostic~-b03a3947-6813-48a4-964f-2fce4fc029f8]: BUSY
+[debug] [2020-03-18T17:03:55.362Z] [runtime-status] [6022] Functions runtime initialized. {"cwd":"/home/dany/Workplace/MoneyTrackerApp/functions","node_version":"13.11.0"}
+[debug] [2020-03-18T17:03:55.363Z] [runtime-status] [6022] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true,"pubsub_emulator":true}
+[debug] [2020-03-18T17:03:55.364Z] [runtime-status] [6022] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"/home/dany/Workplace/MoneyTrackerApp/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2020-03-18T17:03:55.365Z] [runtime-status] [6022] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/home/dany/Workplace/MoneyTrackerApp/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2020-03-18T17:03:55.366Z] [runtime-status] [6022] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/home/dany/Workplace/MoneyTrackerApp/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  Error: Cannot find module 'firebase'
+Require stack:
+- /home/dany/Workplace/MoneyTrackerApp/functions/handlers/users.js
+- /home/dany/Workplace/MoneyTrackerApp/functions/index.js
+- /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:976:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:859:27)
+    at Module.require (internal/modules/cjs/loader.js:1036:19)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at Object.<anonymous> (/home/dany/Workplace/MoneyTrackerApp/functions/handlers/users.js:2:18)
+    at Module._compile (internal/modules/cjs/loader.js:1147:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1167:10)
+    at Module.load (internal/modules/cjs/loader.js:996:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:896:14)
+    at Module.require (internal/modules/cjs/loader.js:1036:19)
+[warn] ⚠  We were unable to load your functions code. (see above)
+[debug] [2020-03-18T17:03:56.631Z] [worker-~diagnostic~-b03a3947-6813-48a4-964f-2fce4fc029f8]: exited
+[debug] [2020-03-18T17:03:56.632Z] [worker-~diagnostic~-b03a3947-6813-48a4-964f-2fce4fc029f8]: FINISHED
