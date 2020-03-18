@@ -11,7 +11,6 @@ import {
 } from "./Styles";
 
 const index = ({ trigger }) => {
-  console.log(trigger);
   return (
     <Profile>
       <Photo></Photo>
