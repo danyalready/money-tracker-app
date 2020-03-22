@@ -24,6 +24,10 @@
 - Calculation
 - Chart diagrams
 
+## Tasks
+
+- Make it responsive
+
 ## Screenshots
 
 ![Screenshot of the project page](https://github.com/ODanyor/MoneyTrackerApp/blob/master/src/static/readme/screen.png?raw=true)
