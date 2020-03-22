@@ -26,4 +26,6 @@
 
 ## Screenshots
 
+![Screenshot of the project page](https://github.com/ODanyor/MoneyTrackerApp/blob/master/src/static/readme/screen.png?raw=true)
+
 ## [Live](https://moneytrackerapp-0000.web.app/)
