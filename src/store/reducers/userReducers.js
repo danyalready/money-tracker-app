@@ -1,5 +1,4 @@
 import {
-  LOADING_USER,
   SET_ERRORS,
   SET_AUTHENTICATED,
   SET_UNAUTHENTICATED,
@@ -7,18 +6,12 @@ import {
 } from "../types";
 
 const initialState = {
-  loading: false,
   authenticated: false,
   credentials: {}
 };
 
 export const userReducers = (state = initialState, action) => {
   switch (action.type) {
-    case LOADING_USER:
-      return {
-        ...state,
-        loading: true
-      };
     case SET_ERRORS:
       return {
         ...state,
@@ -39,8 +32,7 @@ export const userReducers = (state = initialState, action) => {
       return {
         ...state,
         authenticated: true,
-        credentials: action.payload,
-        loading: false
+        credentials: action.payload
       };
     default:
       return state;

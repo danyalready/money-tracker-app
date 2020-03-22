@@ -1,14 +1,14 @@
 import {
   SET_ERRORS,
-  LOADING_USER,
-  SET_UNAUTHENTICATED,
-  SET_CREDENTIALS
+  SET_LOADING,
+  SET_CREDENTIALS,
+  SET_UNAUTHENTICATED
 } from "../types";
 import axios from "axios";
 import { getTransactions } from "./transactionActions";
 
 export const signIn = credentials => dispatch => {
-  dispatch({ type: LOADING_USER });
+  dispatch({ type: SET_LOADING });
   axios
     .post("/signIn", credentials)
     .then(res => setAuthorizationHeader(res.data.token))
@@ -18,6 +18,7 @@ export const signIn = credentials => dispatch => {
         .then(credentials =>
           dispatch({ type: SET_CREDENTIALS, payload: credentials.data })
         )
+        .then(() => dispatch(getTransactions()))
     )
     .catch(err => {
       dispatch({
@@ -28,7 +29,7 @@ export const signIn = credentials => dispatch => {
 };
 
 export const signUp = credentials => dispatch => {
-  dispatch({ type: LOADING_USER });
+  dispatch({ type: SET_LOADING });
   axios
     .post("/signUp", credentials)
     .then(res => setAuthorizationHeader(res.data.token))
@@ -37,7 +38,8 @@ export const signUp = credentials => dispatch => {
         .get("/user")
         .then(credentials =>
           dispatch({ type: SET_CREDENTIALS, payload: credentials.data })
-        );
+        )
+        .then(() => dispatch(getTransactions()));
     })
     .catch(err => {
       dispatch({
@@ -48,6 +50,7 @@ export const signUp = credentials => dispatch => {
 };
 
 export const logOut = () => dispatch => {
+  dispatch({ type: SET_LOADING });
   localStorage.removeItem("Token");
   delete axios.defaults.headers.common["Authorization"];
   dispatch({ type: SET_UNAUTHENTICATED, payload: {} });
@@ -55,6 +58,7 @@ export const logOut = () => dispatch => {
 };
 
 export const getUserCredentials = () => dispatch => {
+  dispatch({ type: SET_LOADING });
   axios
     .get("/user")
     .then(credentials =>

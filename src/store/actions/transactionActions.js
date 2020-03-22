@@ -1,8 +1,8 @@
 import axios from "axios";
 import {
   SET_LOADING,
+  SET_UNLOADING,
   GET_TRANSACTIONS,
-  ADD_TRANSACTION,
   SET_TRANSACTION,
   DELETE_TRANSACTION
 } from "../types";
@@ -21,6 +21,7 @@ export const getTransactions = () => dispatch => {
         )
       });
     })
+    .then(() => dispatch({ type: SET_UNLOADING }))
     .catch(err => {
       console.log(err);
     });
@@ -44,6 +45,7 @@ export const deleteTransaction = transactionId => dispatch => {
         payload: transactionId
       });
     })
+    .then(() => dispatch({ type: SET_UNLOADING }))
     .catch(err => console.log(err));
 };
 

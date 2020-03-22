@@ -1,5 +1,4 @@
 import {
-  SET_LOADING,
   GET_TRANSACTIONS,
   ADD_TRANSACTION,
   SET_TRANSACTION,
@@ -7,7 +6,6 @@ import {
 } from "../types";
 
 const initialState = {
-  loading: false,
   transactions: [
     {
       id: "SgWLspbxu76F2cM3CkQp",
@@ -61,22 +59,15 @@ const initialState = {
 
 export const transactionReducers = (state = initialState, action) => {
   switch (action.type) {
-    case SET_LOADING:
-      return {
-        ...state,
-        loading: true
-      };
     case GET_TRANSACTIONS:
       return {
         ...state,
-        transactions: action.payload,
-        loading: false
+        transactions: action.payload
       };
     case ADD_TRANSACTION:
       return {
         ...state,
-        transactions: [action.payload, ...state.transactions],
-        loading: false
+        transactions: [action.payload, ...state.transactions]
       };
     case SET_TRANSACTION:
       return {
@@ -88,8 +79,7 @@ export const transactionReducers = (state = initialState, action) => {
         ...state,
         transactions: state.transactions.filter(
           transaction => transaction.id !== action.payload
-        ),
-        loading: false
+        )
       };
     default:
       return state;

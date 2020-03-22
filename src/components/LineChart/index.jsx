@@ -23,7 +23,23 @@ const index = ({ transactions }) => {
 
   const options = {
     title: { text: "Path" },
-    chart: { id: "line-graph" },
+    chart: { id: "line" },
+    grid: {
+      borderColor: "#2a2a2a"
+    },
+    colors: ["#f44336"],
+    fill: {
+      type: "gradient",
+      gradient: {
+        shade: "dark",
+        gradientToColors: ["#64dd17"],
+        shadeIntensity: 1,
+        type: "vertical",
+        opacityFrom: 1,
+        opacityTo: 1,
+        stops: [0]
+      }
+    },
     xaxis: {
       categories: sortedData.dates.length > 0 ? sortedData.dates : ["Dates"]
     },

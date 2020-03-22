@@ -54,10 +54,13 @@ export const Name = styled.div`
 `;
 export const Description = styled.div`
   font-size: 13px;
+  max-height: 100px;
+  overflow: hidden;
+  overflow-y: scroll;
 `;
 export const Date = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: -5px;
   right: 0;
   font-size: 11px;
   font-weight: 900;

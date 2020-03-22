@@ -37,6 +37,8 @@ export const About = styled.div`
   flex-direction: column;
 `;
 export const Fullname = styled.div`
+  font-size: 11px;
+  font-weight: 900;
   margin-bottom: 5px;
   width: 80%;
   height: 15px;

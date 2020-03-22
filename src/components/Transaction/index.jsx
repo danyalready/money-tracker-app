@@ -4,7 +4,7 @@ import { Transaction, Stick, Details, Date, Content, Value } from "./Styles";
 
 const index = ({ transaction, trigger, setTransaction }) => {
   const { amount, date, description, name, type } = transaction.transaction;
-  const dateF = dateFormat(date, "dd mmmm", true);
+  const dateF = dateFormat(date, "dd mmm", true);
   const color = type === "profit" ? "#64dd17" : "red";
   const sign = type === "profit" ? "+" : "-";
   const click = () => {

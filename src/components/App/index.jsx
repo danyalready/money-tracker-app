@@ -30,12 +30,14 @@ import Profile from "../Profile/index";
 import PieChart from "../PieChart/index";
 import LineChart from "../LineChart/index";
 import Background from "../Background/index";
+import LoadingBalls from "../LoadingBalls/index";
 
 const index = ({
   user,
   signIn,
   signUp,
   logOut,
+  loading,
 
   transaction,
   transactions,
@@ -70,6 +72,7 @@ const index = ({
     }));
   return (
     <MainContainer>
+      {loading ? <LoadingBalls /> : null}
       <Background show={popup} trigger={toggle} />
       <Popup
         show={popup}
@@ -130,7 +133,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   user: state.user,
-  loading: state.transactions.loading,
+  loading: state.ui.loading,
   transaction: state.transactions.transaction,
   transactions: state.transactions.transactions
 });

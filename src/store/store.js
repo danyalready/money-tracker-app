@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 import logger from "redux-logger";
 
 // Reducers ...
+import { uiReducers } from "./reducers/uiReducers";
 import { userReducers } from "./reducers/userReducers";
 import { transactionReducers } from "./reducers/transactionReducers";
 
@@ -10,6 +11,7 @@ const initialState = {};
 const middleware = [thunk, logger];
 
 const rootReducers = combineReducers({
+  ui: uiReducers,
   user: userReducers,
   transactions: transactionReducers
 });

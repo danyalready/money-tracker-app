@@ -48,23 +48,29 @@ export const Date = styled.div`
   background: #fff;
   border-radius: 5px;
   box-shadow: 1px 1px 5px 1px #bbdefb;
+  display: flex;
+  justify-content: center;
   .sub-date {
+    width: 25px;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: 14px;
+    font-size: 15px;
   }
 `;
 
 export const Content = styled.div`
+  overflow: hidden;
   .name {
     font-size: 17px;
     font-weight: 900;
   }
   .description {
     font-size: 11px;
+    width: 200px;
+    max-height: 25px;
   }
 `;
 
