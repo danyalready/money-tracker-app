@@ -5,7 +5,9 @@ import Chart from "react-apexcharts";
 const index = ({ transactions }) => {
   const [sortedData, setSortedData] = useState({ dates: [], amounts: [] });
   const sortedTransactions = [];
-  transactions.map(transaction => sortedTransactions.push(transaction));
+  transactions.map(transaction =>
+    sortedTransactions.push(transaction.transaction)
+  );
   if (sortedTransactions.length > 1) {
     sortedTransactions.sort((a, b) => new Date(a.date) - new Date(b.date));
   } else sortedTransactions;

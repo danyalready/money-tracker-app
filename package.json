@@ -20,6 +20,7 @@
   "bugs": {
     "url": "https://github.com/ODanyor/MoneyTrackerApp/issues"
   },
+  "proxy": "https://europe-west2-moneytrackerapp-0000.cloudfunctions.net/api",
   "devDependencies": {
     "@babel/core": "^7.8.7",
     "@babel/preset-env": "^7.8.7",
@@ -35,7 +36,9 @@
   },
   "dependencies": {
     "apexcharts": "^3.16.1",
+    "axios": "^0.19.2",
     "dateformat": "^3.0.3",
+    "jwt-decode": "^2.2.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
     "react-apexcharts": "^1.3.6",

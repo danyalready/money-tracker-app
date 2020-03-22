@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import jwtDecode from "jwt-decode";
 import MainContainer from "../../containers/MainContainer/index";
 import ChartsContainer from "../../containers/ChartsContainer/index";
 import CentralContainer from "../../containers/CentralContainer/index";
 // Redux
+import store from "../../store/store";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
+  signIn,
+  signUp,
+  logOut,
+  getUserCredentials
+} from "../../store/actions/userActions";
+import {
+  getTransactions,
   addTransaction,
   setTransaction,
   deleteTransaction
@@ -22,12 +32,31 @@ import LineChart from "../LineChart/index";
 import Background from "../Background/index";
 
 const index = ({
+  user,
+  signIn,
+  signUp,
+  logOut,
+
+  transaction,
+  transactions,
   addTransaction,
   setTransaction,
   deleteTransaction,
-  transactions,
-  transaction
+  getUserCredentials
 }) => {
+  useEffect(() => {
+    if (localStorage.Token) {
+      const decodedToken = jwtDecode(localStorage.Token);
+      if (decodedToken.exp * 1000 < Date.now()) {
+        store.dispatch(logOut());
+        window.location.href = "/";
+      } else {
+        axios.defaults.headers.common["Authorization"] = localStorage.Token;
+        getUserCredentials();
+      }
+    }
+  }, []);
+
   const [popup, setPopup] = useState(false);
   const toggle = () => setPopup(!popup);
   const [popupAuth, setPopupAuth] = useState({
@@ -53,6 +82,8 @@ const index = ({
         show={popupAuth.show}
         type={popupAuth.type}
         trigger={toggleAuth}
+        signIn={signIn}
+        signUp={signUp}
       />
 
       <History
@@ -61,7 +92,7 @@ const index = ({
         setTransaction={setTransaction}
       />
       <CentralContainer>
-        <Profile trigger={toggleAuth} />
+        <Profile trigger={toggleAuth} user={user} logOut={logOut} />
         <Form addTransaction={addTransaction} />
       </CentralContainer>
       <ChartsContainer>
@@ -73,23 +104,35 @@ const index = ({
 };
 
 index.propTypes = {
+  user: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,
+  transaction: PropTypes.object.isRequired,
   transactions: PropTypes.array.isRequired,
+
   addTransaction: PropTypes.func.isRequired,
   setTransaction: PropTypes.func.isRequired,
-  deleteTransaction: PropTypes.func.isRequired
+  getTransactions: PropTypes.func.isRequired,
+  deleteTransaction: PropTypes.func.isRequired,
+  getUserCredentials: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({
+  signIn: credentials => dispatch(signIn(credentials)),
+  signUp: credentials => dispatch(signUp(credentials)),
+  logOut: () => dispatch(logOut()),
+
+  getTransactions: () => dispatch(getTransactions()),
   addTransaction: transaction => dispatch(addTransaction(transaction)),
   setTransaction: transaction => dispatch(setTransaction(transaction)),
-  deleteTransaction: id => dispatch(deleteTransaction(id))
+  deleteTransaction: id => dispatch(deleteTransaction(id)),
+  getUserCredentials: () => dispatch(getUserCredentials())
 });
 
 const mapStateToProps = state => ({
+  user: state.user,
   loading: state.transactions.loading,
-  transactions: state.transactions.transactions,
-  transaction: state.transactions.transaction
+  transaction: state.transactions.transaction,
+  transactions: state.transactions.transactions
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(index);

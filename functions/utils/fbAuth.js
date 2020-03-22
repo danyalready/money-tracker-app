@@ -1,6 +1,6 @@
 const { admin, db } = require("./admin");
 
-exports.fbAuth = (req, res, next) => {
+module.exports = (req, res, next) => {
   let idToken;
   if (
     req.headers.authorization &&
@@ -8,7 +8,8 @@ exports.fbAuth = (req, res, next) => {
   ) {
     idToken = req.headers.authorization.split("Bearer ")[1];
   } else {
-    return res.status(403).json({ error: "Access forbidden" });
+    console.error("No token found");
+    return res.status(403).json({ error: "Unauthorized" });
   }
 
   admin
@@ -16,22 +17,18 @@ exports.fbAuth = (req, res, next) => {
     .verifyIdToken(idToken)
     .then(decodedToken => {
       req.user = decodedToken;
-      db.collection("users")
-        .doc(req.user.email)
-        .get()
-        .then(data => {
-          req.user.email = data.data().email;
-          next();
-        })
-        .catch(err => {
-          return res.status(500).json({ error: err.code });
-        });
+      return db
+        .collection("users")
+        .where("userId", "==", req.user.uid)
+        .limit(1)
+        .get();
+    })
+    .then(data => {
+      req.user.email = data.docs[0].data().email;
+      return next();
     })
     .catch(err => {
-      if (err.code === "auth/argument-error") {
-        return res.status(403).json({ error: "Invalid token" });
-      } else {
-        return res.status(403).json({ error: err.code });
-      }
+      console.error("Error while verifying token ", err);
+      return res.status(403).json(err);
     });
 };

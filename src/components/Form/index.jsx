@@ -39,8 +39,7 @@ const index = ({ addTransaction }) => {
       name,
       date,
       amount,
-      description,
-      id: Math.floor(Math.random() * 1000000000)
+      description
     };
     if (transaction.amount === "" || transaction.amount === 0) {
       return console.log("ERROR: Fill the amount field!");

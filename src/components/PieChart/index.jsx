@@ -3,16 +3,16 @@ import { PieChartContainer } from "./Styles";
 import Chart from "react-apexcharts";
 
 const index = ({ transactions }) => {
-  const profit = transactions.filter(profit => {
-    return profit.type === "profit";
+  const profit = transactions.filter(transaction => {
+    return transaction.transaction.type === "profit";
   });
-  const expense = transactions.filter(expense => {
-    return expense.type === "expense";
+  const expense = transactions.filter(transaction => {
+    return transaction.transaction.type === "expense";
   });
 
   const sum = array => {
     let amounts = [];
-    array.map(a => amounts.push(a.amount));
+    array.map(transaction => amounts.push(transaction.transaction.amount));
     if (amounts.length > 1)
       return amounts.reduce((a, c) => Number(a) + Number(c));
     return Number(amounts);

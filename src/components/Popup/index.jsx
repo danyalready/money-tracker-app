@@ -13,7 +13,9 @@ import {
 } from "./Styles";
 
 const index = ({ show, transaction, trigger, deleteTransaction }) => {
-  const { amount, name, description, date, type } = transaction;
+  const { amount, name, description, date, type } = transaction.transaction
+    ? transaction.transaction
+    : {};
   const sign = type === "profit" ? "+" : "-";
   const color = type === "profit" ? "#64dd17" : "#e53935";
   const removeTransaction = () => {

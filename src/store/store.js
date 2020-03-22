@@ -3,12 +3,14 @@ import thunk from "redux-thunk";
 import logger from "redux-logger";
 
 // Reducers ...
+import { userReducers } from "./reducers/userReducers";
 import { transactionReducers } from "./reducers/transactionReducers";
 
 const initialState = {};
 const middleware = [thunk, logger];
 
 const rootReducers = combineReducers({
+  user: userReducers,
   transactions: transactionReducers
 });
 

@@ -10,18 +10,29 @@ import {
   Button
 } from "./Styles";
 
-const index = ({ trigger }) => {
+const index = ({ trigger, user, logOut }) => {
+  const { authenticated, credentials } = user;
   return (
     <Profile>
       <Photo></Photo>
       <ProfileDetails>
         <About>
-          <Fullname></Fullname>
-          <Email></Email>
+          <Fullname background={authenticated ? "#eee" : "#fff"}>
+            {credentials.fullname}
+          </Fullname>
+          <Email background={authenticated ? "#ee" : "#fff"}>
+            {credentials.email}
+          </Email>
         </About>
         <Authenticate>
-          <Button onClick={() => trigger("login")}>Login</Button>
-          <Button onClick={() => trigger("register")}>Register</Button>
+          {authenticated ? (
+            <Button onClick={logOut}>Log out</Button>
+          ) : (
+            <>
+              <Button onClick={() => trigger("login")}>Login</Button>
+              <Button onClick={() => trigger("register")}>Register</Button>
+            </>
+          )}
         </Authenticate>
       </ProfileDetails>
     </Profile>

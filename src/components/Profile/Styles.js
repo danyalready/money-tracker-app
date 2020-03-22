@@ -40,13 +40,13 @@ export const Fullname = styled.div`
   margin-bottom: 5px;
   width: 80%;
   height: 15px;
-  background: #fff;
+  background: ${({ background }) => background};
   border-radius: 2px;
 `;
 export const Email = styled.div`
   width: 60%;
   height: 15px;
-  background: #fff;
+  background: ${({ background }) => background};
   border-radius: 2px;
 `;
 

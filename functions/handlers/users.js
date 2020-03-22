@@ -4,9 +4,36 @@ const firebase = require("firebase");
 const { firebaseConfig } = require("../config/firebaseConfig");
 firebase.initializeApp(firebaseConfig);
 
-// @route: /users/signUp
-// @desc: Register a new user
-// @access: Public
+exports.signIn = (req, res) => {
+  const userCredentials = {
+    email: req.body.email,
+    password: req.body.password
+  };
+
+  const { validateSignInData } = require("../utils/validators");
+  const { errors, valid } = validateSignInData(userCredentials);
+
+  if (!valid) return res.status(400).json({ errors });
+
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(userCredentials.email, userCredentials.password)
+    .then(data => {
+      return data.user.getIdToken();
+    })
+    .then(token => {
+      return res.status(200).json({ token });
+    })
+    .catch(err => {
+      if (err.code === "auth/wrong-password") {
+        return res
+          .status(400)
+          .json({ error: "Wrong user credentials, please try again." });
+      }
+      return res.status(400).json({ error: err.code });
+    });
+};
+
 exports.signUp = (req, res) => {
   const newUser = {
     fullname: req.body.fullname,
@@ -65,35 +92,14 @@ exports.signUp = (req, res) => {
     });
 };
 
-// @route: /users/signIn
-// @desc: Log in user
-// @access: Public
-exports.signIn = (req, res) => {
-  const userCredentials = {
-    email: req.body.email,
-    password: req.body.password
-  };
-
-  const { validateSignInData } = require("../utils/validators");
-  const { errors, valid } = validateSignInData(userCredentials);
-
-  if (!valid) return res.status(400).json({ errors });
-
-  firebase
-    .auth()
-    .signInWithEmailAndPassword(userCredentials.email, userCredentials.password)
-    .then(data => {
-      return data.user.getIdToken();
-    })
-    .then(token => {
-      return res.status(200).json({ token });
+exports.getUser = (req, res) => {
+  db.collection("users")
+    .doc(req.user.email)
+    .get()
+    .then(doc => {
+      return res.status(200).json(doc.data());
     })
     .catch(err => {
-      if (err.code === "auth/wrong-password") {
-        return res
-          .status(400)
-          .json({ error: "Wrong user credentials, please try again." });
-      }
-      return res.status(400).json({ error: err.code });
+      return res.status(500).json({ error: err.code });
     });
 };

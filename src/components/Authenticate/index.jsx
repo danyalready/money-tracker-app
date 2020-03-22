@@ -22,7 +22,7 @@ const Input = ({ type, name, src, placeholder, value, onChange }) => {
   );
 };
 
-const Register = () => {
+const Register = ({ signUp, trigger }) => {
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,7 +39,8 @@ const Register = () => {
       password,
       passwordConfirm
     };
-    console.log(credentials);
+    signUp(credentials);
+    trigger();
   };
   return (
     <Form onSubmit={submitHandle}>
@@ -76,12 +77,12 @@ const Register = () => {
         value={passwordConfirm}
         onChange={passwordConfirmHandle}
       />
-      <Button>Submit</Button>
+      <Button type="submit">Submit</Button>
     </Form>
   );
 };
 
-const Login = () => {
+const Login = ({ signIn, trigger }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const emailHandle = event => setEmail(event.target.value);
@@ -92,7 +93,8 @@ const Login = () => {
       email,
       password
     };
-    console.log(credentials);
+    signIn(credentials);
+    trigger();
   };
   return (
     <Form onSubmit={submitHandle}>
@@ -113,16 +115,20 @@ const Login = () => {
         value={password}
         onChange={passwordHandle}
       />
-      <Button>Submit</Button>
+      <Button type="submit">Submit</Button>
     </Form>
   );
 };
 
-const index = ({ show, type, trigger }) => {
+const index = ({ show, type, trigger, signIn, signUp }) => {
   return (
     <Authenticate show={show}>
       <Background show={show} trigger={trigger} />
-      {type === "login" ? <Login /> : <Register />}
+      {type === "login" ? (
+        <Login signIn={signIn} trigger={trigger} />
+      ) : (
+        <Register signUp={signUp} trigger={trigger} />
+      )}
     </Authenticate>
   );
 };

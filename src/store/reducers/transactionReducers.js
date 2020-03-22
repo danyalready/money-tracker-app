@@ -1,5 +1,6 @@
 import {
   SET_LOADING,
+  GET_TRANSACTIONS,
   ADD_TRANSACTION,
   SET_TRANSACTION,
   DELETE_TRANSACTION
@@ -9,36 +10,50 @@ const initialState = {
   loading: false,
   transactions: [
     {
-      amount: "450",
-      date: "2020-03-19",
-      description: "Succesful completed order.",
-      name: "Order",
-      type: "profit",
-      id: 341828366
+      id: "SgWLspbxu76F2cM3CkQp",
+      transaction: {
+        name: "Tickets",
+        amount: "750",
+        type: "expense",
+        date: "2020-03-04",
+        createdAt: "2020-03-20T21:10:20.542Z",
+        description: "Airplane tickets to have a nice trip.",
+        author: "abUar1xA1uecptNgPmyRzdiB3IP2"
+      }
     },
     {
-      amount: "500",
-      date: "2020-03-16",
-      description: "Monthly expense for taxes.",
-      name: "Taxes",
-      type: "expense",
-      id: 795119007
+      id: "SgWLspbxu76Fu17dCkQp",
+      transaction: {
+        name: "Bills",
+        amount: "450",
+        type: "expense",
+        date: "2020-03-03",
+        createdAt: "2020-03-20T21:10:20.542Z",
+        description: "My monthly pay for taxes",
+        author: "abUar1xA1uecptNgPmyRzdiB3IP2"
+      }
     },
     {
-      amount: "150",
-      date: "2020-03-15",
-      description: "I've decided to buy this very nice shoes.",
-      name: "Nice shoes",
-      type: "expense",
-      id: 282474127
+      id: "Sd7wopbxu76F2cM3CkQp",
+      transaction: {
+        name: "Nice shoes",
+        amount: "150",
+        type: "expense",
+        date: "2020-03-02",
+        createdAt: "2020-03-20T21:10:20.542Z",
+        description: "These are really nice shoes."
+      }
     },
     {
-      amount: "3500",
-      date: "2020-03-14",
-      description: "My monthly salary",
-      name: "Salary",
-      type: "profit",
-      id: 541522257
+      id: "SgWLspbxu76Fjw802Qp",
+      transaction: {
+        name: "Salary",
+        amount: "3500",
+        type: "profit",
+        date: "2020-03-01",
+        createdAt: "2020-03-20T21:10:20.542Z",
+        description: "My monthly salary."
+      }
     }
   ],
   transaction: {}
@@ -51,10 +66,17 @@ export const transactionReducers = (state = initialState, action) => {
         ...state,
         loading: true
       };
+    case GET_TRANSACTIONS:
+      return {
+        ...state,
+        transactions: action.payload,
+        loading: false
+      };
     case ADD_TRANSACTION:
       return {
         ...state,
-        transactions: [action.payload, ...state.transactions]
+        transactions: [action.payload, ...state.transactions],
+        loading: false
       };
     case SET_TRANSACTION:
       return {
@@ -66,7 +88,8 @@ export const transactionReducers = (state = initialState, action) => {
         ...state,
         transactions: state.transactions.filter(
           transaction => transaction.id !== action.payload
-        )
+        ),
+        loading: false
       };
     default:
       return state;
