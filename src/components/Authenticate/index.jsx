@@ -9,7 +9,7 @@ const Input = ({ type, name, src, placeholder, value, onChange }) => {
   return (
     <InputField>
       <Icon>
-        <img alt="icon" src={src} width="100%" height="auto" />
+        <img alt="icon" src={src} width="auto" height="100%" />
       </Icon>
       <input
         type={type}
@@ -27,17 +27,18 @@ const Register = ({ signUp, trigger }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const fullnameHandle = event => setFullname(event.target.value);
-  const emailHandle = event => setEmail(event.target.value);
-  const passwordHandle = event => setPassword(event.target.value);
-  const passwordConfirmHandle = event => setPasswordConfirm(event.target.value);
-  const submitHandle = event => {
+  const fullnameHandle = (event) => setFullname(event.target.value);
+  const emailHandle = (event) => setEmail(event.target.value);
+  const passwordHandle = (event) => setPassword(event.target.value);
+  const passwordConfirmHandle = (event) =>
+    setPasswordConfirm(event.target.value);
+  const submitHandle = (event) => {
     event.preventDefault();
     const credentials = {
       fullname,
       email,
       password,
-      passwordConfirm
+      passwordConfirm,
     };
     signUp(credentials);
     trigger();
@@ -85,13 +86,13 @@ const Register = ({ signUp, trigger }) => {
 const Login = ({ signIn, trigger }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const emailHandle = event => setEmail(event.target.value);
-  const passwordHandle = event => setPassword(event.target.value);
-  const submitHandle = event => {
+  const emailHandle = (event) => setEmail(event.target.value);
+  const passwordHandle = (event) => setPassword(event.target.value);
+  const submitHandle = (event) => {
     event.preventDefault();
     const credentials = {
       email,
-      password
+      password,
     };
     signIn(credentials);
     trigger();

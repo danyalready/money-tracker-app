@@ -4,19 +4,17 @@ exports.getTransactions = (req, res) => {
   db.collection("transactions")
     .where("author", "==", req.user.uid)
     .get()
-    .then(data => {
+    .then((data) => {
       let transactions = [];
-      data.forEach(doc => {
+      data.forEach((doc) => {
         transactions.push({
           id: doc.id,
-          transaction: doc.data()
+          transaction: doc.data(),
         });
       });
       return res.status(200).json(transactions);
     })
-    .catch(err => {
-      return res.status(404).json({ error: err.code });
-    });
+    .catch((err) => res.status(404).json({ error: err.code }));
 };
 
 exports.addTransaction = (req, res) => {
@@ -28,16 +26,12 @@ exports.addTransaction = (req, res) => {
     description: req.body.description,
 
     author: req.user.uid,
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
   };
   db.collection("transactions")
     .add(transaction)
-    .then(doc => {
-      return res.status(201).json({ message: "Transaction created" });
-    })
-    .catch(err => {
-      return res.status(400).json({ error: err.code });
-    });
+    .then((doc) => res.status(201).json({ message: "Transaction created" }))
+    .catch((err) => res.status(400).json({ error: err.code }));
 };
 
 exports.deleteTransaction = (req, res) => {
@@ -45,10 +39,6 @@ exports.deleteTransaction = (req, res) => {
   db.collection("transactions")
     .doc(transactionId)
     .delete()
-    .then(() => {
-      return res.status(200).json({ message: "Transaction deleted" });
-    })
-    .catch(err => {
-      return res.status(500).json({ error: err.code });
-    });
+    .then(() => res.status(200).json({ message: "Transaction deleted" }))
+    .catch((err) => res.status(500).json({ error: err.code }));
 };
