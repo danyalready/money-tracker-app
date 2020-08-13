@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useFormInput } from '../../hooks'
 import Select from 'react-select'
 import {
   Form,
@@ -25,30 +26,20 @@ const index = ({ addTransaction }) => {
     { value: 'expense', label: 'Expense' },
   ]
 
-  const [type, setType] = useState(options[1])
-  const [name, setName] = useState('')
-  const [date, setDate] = useState(getCurrentDate())
-  const [amount, setAmount] = useState('')
-  const [description, setDescription] = useState('')
+  const type = useFormInput(options[1], 'select')
+  const name = useFormInput('')
+  const date = useFormInput(getCurrentDate())
+  const amount = useFormInput('', 'number')
+  const description = useFormInput('')
 
-  const typeHandle = (event) => setType(event)
-  const nameHandle = (event) => setName(event.target.value)
-  const dateHandle = (event) => setDate(event.target.value)
-  const amountHandle = (event) => {
-    const re = /^[0-9\b]+$/
-    if (event.target.value === '' || re.test(event.target.value)) {
-      setAmount(event.target.value)
-    }
-  }
-  const descriptionHandle = (event) => setDescription(event.target.value)
   const submitHandle = (event) => {
     event.preventDefault()
     const transaction = {
       type: type.value,
-      name,
-      date,
-      amount,
-      description,
+      name: name.value,
+      date: date.value,
+      amount: amount.value,
+      description: description.value,
     }
     if (transaction.amount === '' || transaction.amount === 0) {
       return console.log('ERROR: Fill the amount field!')
@@ -58,22 +49,22 @@ const index = ({ addTransaction }) => {
     }
     addTransaction(transaction)
 
-    setType(options[1])
-    setName('')
-    setDate(getCurrentDate())
-    setAmount('')
-    setDescription('')
+    type.reset(options[1])
+    name.reset('')
+    date.reset(getCurrentDate())
+    amount.reset('')
+    description.reset('')
   }
 
   const styles = {
-    control: (provided, state) => ({
+    control: (provided) => ({
       ...provided,
       height: '40px',
       border: '1px solid #aaa',
       boxShadow: '0 !important',
       '&:hover': { boxShadow: '0 !important' },
     }),
-    option: (provided, state) => ({
+    option: (provided) => ({
       ...provided,
       background: '#fff',
       color: '#37474f',
@@ -88,40 +79,20 @@ const index = ({ addTransaction }) => {
           <Select
             styles={styles}
             defaultValue={{ label: 'Expense', value: 'expense' }}
-            value={type}
-            onChange={typeHandle}
+            {...type}
             options={options}
             isSearchable={false}
             placeholder='Type of transaction ...'
           />
           <Header>
-            <Input
-              name='name'
-              type='text'
-              placeholder='Name'
-              value={name}
-              onChange={nameHandle}
-            />
-            <Input
-              name='date'
-              type='date'
-              defaultValue={date}
-              value={date}
-              onChange={dateHandle}
-            />
-            <Input
-              name='amount'
-              type='text'
-              placeholder='$$$'
-              value={amount}
-              onChange={amountHandle}
-            />
+            <Input name='name' type='text' placeholder='Name' {...name} />
+            <Input name='date' type='date' defaultValue={date} {...date} />
+            <Input name='amount' type='text' placeholder='$$$' {...amount} />
           </Header>
           <Description
             name='description'
             placeholder='Description ...'
-            value={description}
-            onChange={descriptionHandle}
+            {...description}
           />
           <Button type='submit'>Submit</Button>
         </Form>
