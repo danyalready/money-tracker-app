@@ -84,11 +84,7 @@ const index = ({
         duration: 9000,
         isClosable: true,
       })
-    }
-  }, [user.error])
-
-  useEffect(() => {
-    if (user.errors) {
+    } else if (user.errors) {
       Object.keys(user.errors).forEach((error) => {
         toast({
           title: error,
@@ -99,7 +95,7 @@ const index = ({
         })
       })
     }
-  }, [user.errors])
+  }, [user.error, user.errors])
 
   return (
     <MainContainer>
