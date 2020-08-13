@@ -2,7 +2,7 @@
 
 ## About
 
-> This is an expense tracker application for tracking your profits and helping to analyze your expenses.
+This is an expense tracker application for tracking your profits and helping to analyze your expenses.
 
 ## Tech stack
 
@@ -26,7 +26,7 @@
 
 ## Tasks
 
-- Make it responsive
+- [] Make app responsive
 
 ## Screenshots
 
