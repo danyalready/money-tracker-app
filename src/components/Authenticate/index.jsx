@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useFormInput } from '../../hooks'
 import { Authenticate, Form, Title, InputField, Icon, Button } from './Styles'
 import Background from '../Background'
 import user from '../../static/images/user.png'
 import mail from '../../static/images/mail.png'
 import lock from '../../static/images/lock.png'
 
-const Input = ({ type, name, src, placeholder, value, onChange }) => {
+const Input = ({ type, name, imgSrc, placeholder, value, onChange }) => {
   return (
     <InputField>
       <Icon>
-        <img alt='icon' src={src} width='auto' height='100%' />
+        <img alt='icon' src={imgSrc} width='auto' height='100%' />
       </Icon>
       <input
         type={type}
@@ -23,60 +24,53 @@ const Input = ({ type, name, src, placeholder, value, onChange }) => {
 }
 
 const Register = ({ signUp, trigger }) => {
-  const [fullname, setFullname] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [passwordConfirm, setPasswordConfirm] = useState('')
-  const fullnameHandle = (event) => setFullname(event.target.value)
-  const emailHandle = (event) => setEmail(event.target.value)
-  const passwordHandle = (event) => setPassword(event.target.value)
-  const passwordConfirmHandle = (event) =>
-    setPasswordConfirm(event.target.value)
+  const fullname = useFormInput('')
+  const email = useFormInput('')
+  const password = useFormInput('')
+  const passwordConfirm = useFormInput('')
+
   const submitHandle = (event) => {
     event.preventDefault()
     const credentials = {
-      fullname,
-      email,
-      password,
-      passwordConfirm,
+      fullname: fullname.value,
+      email: email.value,
+      password: password.value,
+      passwordConfirm: passwordConfirm.value,
     }
     signUp(credentials)
     trigger()
   }
+
   return (
     <Form onSubmit={submitHandle}>
       <Title>Registration</Title>
       <Input
         type='text'
         name='fullname'
-        src={user}
+        imgSrc={user}
         placeholder='Full name'
-        value={fullname}
-        onChange={fullnameHandle}
+        {...fullname}
       />
       <Input
-        type='text'
+        type='email'
         name='email-address'
-        src={mail}
+        imgSrc={mail}
         placeholder='Email address'
-        value={email}
-        onChange={emailHandle}
+        {...email}
       />
       <Input
         type='password'
         name='password'
-        src={lock}
+        imgSrc={lock}
         placeholder='Password'
-        value={password}
-        onChange={passwordHandle}
+        {...password}
       />
       <Input
         type='password'
         name='password-confirm'
-        src={lock}
+        imgSrc={lock}
         placeholder='Confirm password'
-        value={passwordConfirm}
-        onChange={passwordConfirmHandle}
+        {...passwordConfirm}
       />
       <Button type='submit'>Submit</Button>
     </Form>
@@ -84,37 +78,35 @@ const Register = ({ signUp, trigger }) => {
 }
 
 const Login = ({ signIn, trigger }) => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const emailHandle = (event) => setEmail(event.target.value)
-  const passwordHandle = (event) => setPassword(event.target.value)
+  const email = useFormInput('')
+  const password = useFormInput('')
+
   const submitHandle = (event) => {
     event.preventDefault()
     const credentials = {
-      email,
-      password,
+      email: email.value,
+      password: password.value,
     }
     signIn(credentials)
     trigger()
   }
+
   return (
     <Form onSubmit={submitHandle}>
       <Title>Login</Title>
       <Input
-        type='text'
+        type='email'
         name='full-name'
-        src={mail}
+        imgSrc={mail}
         placeholder='Email address'
-        value={email}
-        onChange={emailHandle}
+        {...email}
       />
       <Input
         type='password'
         name='full-name'
-        src={lock}
+        imgSrc={lock}
         placeholder='Password'
-        value={password}
-        onChange={passwordHandle}
+        {...password}
       />
       <Button type='submit'>Submit</Button>
     </Form>
