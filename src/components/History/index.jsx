@@ -1,16 +1,16 @@
-import React from "react";
-import { History } from "./Styles";
-import Transaction from "../Transaction/index";
+import React from 'react'
+import { History } from './Styles'
+import Transaction from '../Transaction'
 
 const Transactions = ({ transactions, trigger, setTransaction }) =>
-  transactions.map(transaction => (
+  transactions.map((transaction) => (
     <Transaction
       key={transaction.id}
       transaction={transaction}
       trigger={trigger}
       setTransaction={setTransaction}
     />
-  ));
+  ))
 
 const index = ({ transactions, trigger, setTransaction }) => {
   return (
@@ -21,7 +21,7 @@ const index = ({ transactions, trigger, setTransaction }) => {
         setTransaction={setTransaction}
       />
     </History>
-  );
-};
+  )
+}
 
-export default index;
+export default index

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import {
   Profile,
   Photo,
@@ -7,20 +7,20 @@ import {
   Fullname,
   Email,
   Authenticate,
-  Button
-} from "./Styles";
+  Button,
+} from './Styles'
 
 const index = ({ trigger, user, logOut }) => {
-  const { authenticated, credentials } = user;
+  const { authenticated, credentials } = user
   return (
     <Profile>
       <Photo></Photo>
       <ProfileDetails>
         <About>
-          <Fullname background={authenticated ? "#eee" : "#fff"}>
+          <Fullname background={authenticated ? '#eee' : '#fff'}>
             {credentials.fullname}
           </Fullname>
-          <Email background={authenticated ? "#ee" : "#fff"}>
+          <Email background={authenticated ? '#ee' : '#fff'}>
             {credentials.email}
           </Email>
         </About>
@@ -29,14 +29,14 @@ const index = ({ trigger, user, logOut }) => {
             <Button onClick={logOut}>Log out</Button>
           ) : (
             <>
-              <Button onClick={() => trigger("login")}>Login</Button>
-              <Button onClick={() => trigger("register")}>Register</Button>
+              <Button onClick={() => trigger('login')}>Login</Button>
+              <Button onClick={() => trigger('register')}>Register</Button>
             </>
           )}
         </Authenticate>
       </ProfileDetails>
     </Profile>
-  );
-};
+  )
+}
 
-export default index;
+export default index

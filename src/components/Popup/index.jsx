@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import {
   Popup,
   Amount,
@@ -9,21 +9,21 @@ import {
   Footer,
   Delete,
   Buttons,
-  DeleteButton
-} from "./Styles";
+  DeleteButton,
+} from './Styles'
 
 const index = ({ show, transaction, trigger, deleteTransaction }) => {
   const { amount, name, description, date, type } = transaction.transaction
     ? transaction.transaction
-    : {};
-  const sign = type === "profit" ? "+" : "-";
-  const color = type === "profit" ? "#64dd17" : "#e53935";
+    : {}
+  const sign = type === 'profit' ? '+' : '-'
+  const color = type === 'profit' ? '#64dd17' : '#e53935'
   const removeTransaction = () => {
-    deleteTransaction(transaction.id);
-    trigger();
-  };
+    deleteTransaction(transaction.id)
+    trigger()
+  }
   return (
-    <Popup display={show ? "block" : "none"}>
+    <Popup display={show ? 'block' : 'none'}>
       <Amount color={color}>
         {sign}
         {amount}$
@@ -36,16 +36,16 @@ const index = ({ show, transaction, trigger, deleteTransaction }) => {
       <Footer>
         <Delete>Delete:</Delete>
         <Buttons>
-          <DeleteButton color="#64dd17" onClick={removeTransaction}>
+          <DeleteButton color='#64dd17' onClick={removeTransaction}>
             Yes
           </DeleteButton>
-          <DeleteButton color="#e53935" onClick={trigger}>
+          <DeleteButton color='#e53935' onClick={trigger}>
             No
           </DeleteButton>
         </Buttons>
       </Footer>
     </Popup>
-  );
-};
+  )
+}
 
-export default index;
+export default index
