@@ -1,32 +1,30 @@
 # MoneyTrackerApp
 
-## About
+## About 🤔
 
-This is an expense tracker application for tracking your profits and helping to analyze your expenses.
+This is an expense tracker application for tracking your profits and expenses to help and analyze your finances.
 
-## Tech stack
+## Stack 🔨
 
-- ReactJS
-- React dom
+- React
 - Redux
-- Redux-thunk
-- ApexCharts
-- JWT
-- Dateformat
-- Styled-components
-- Firebase cloud functions
-- Firebase firestore
+- apex-charts
+- JWT (To encrypt/decrypt secret auth token)
+- dateformat
+- styled-components (to style react components)
+- Firebase (API is written manually)
 
-## Features
+## Features 🌟
 
-- Authentication system
-- Adding and removing transactions
+- Authentication/Authorization
+- Make and remove transactions
 - Calculation
-- Chart diagrams
+- Data representation with charts and dia
 
-## Tasks
+## Tasks 📝
 
-- [] Make app responsive
+- [x] Add toasts
+- [ ] Make app responsive
 
 ## Screenshots
 
