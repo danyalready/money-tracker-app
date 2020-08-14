@@ -4,16 +4,19 @@ export const useFormInput = (initialValue, type) => {
   const [value, setValue] = useState(initialValue)
 
   function handleChange(e) {
-    if (type === 'select') {
-      setValue(e)
-    } else if (type === 'number') {
-      const re = /^[0-9\b]+$/
+    switch (e) {
+      case 'select':
+        setValue(e)
+        break
+      case 'number':
+        const re = /^[0-9\b]+$/
 
-      if (e.target.value === '' || re.test(e.target.value)) {
+        if (e.target.value === '' || re.test(e.target.value)) {
+          setValue(e.target.value)
+        }
+        break
+      default:
         setValue(e.target.value)
-      }
-    } else {
-      setValue(e.target.value)
     }
   }
 
