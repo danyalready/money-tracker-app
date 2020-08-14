@@ -19,7 +19,7 @@ This is an expense tracker application for tracking your profits and expenses to
 - Authentication/Authorization
 - Make and remove transactions
 - Calculation
-- Data representation with charts and dia
+- Data representation with charts and diagrams
 
 ## Tasks 📝
 
