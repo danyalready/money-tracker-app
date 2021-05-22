@@ -4,7 +4,7 @@ export const useFormInput = (initialValue, type) => {
   const [value, setValue] = useState(initialValue)
 
   function handleChange(e) {
-    switch (e) {
+    switch (e.type) {
       case 'select':
         setValue(e)
         break

@@ -78,8 +78,9 @@ const index = ({ addTransaction }) => {
         <Form onSubmit={submitHandle}>
           <Select
             styles={styles}
-            defaultValue={{ label: 'Expense', value: 'expense' }}
+            defaultValue={options[1]}
             {...type}
+            onChange={e => { e.type = 'select', type.onChange(e)}}
             options={options}
             isSearchable={false}
             placeholder='Type of transaction ...'
@@ -87,7 +88,7 @@ const index = ({ addTransaction }) => {
           <Header>
             <Input name='name' type='text' placeholder='Name' {...name} />
             <Input name='date' type='date' defaultValue={date} {...date} />
-            <Input name='amount' type='text' placeholder='$$$' {...amount} />
+            <Input name='amount' type='number' placeholder='$$$' {...amount} />
           </Header>
           <Description
             name='description'

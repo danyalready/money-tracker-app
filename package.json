@@ -35,13 +35,15 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "@chakra-ui/core": "^0.8.0",
+    "@chakra-ui/react": "^1.6.2",
     "@emotion/core": "^10.0.34",
-    "@emotion/styled": "^10.0.27",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
     "apexcharts": "^3.16.1",
     "axios": "^0.19.2",
     "dateformat": "^3.0.3",
     "emotion-theming": "^10.0.27",
+    "framer-motion": "^4",
     "jwt-decode": "^2.2.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",

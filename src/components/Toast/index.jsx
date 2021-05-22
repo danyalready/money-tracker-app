@@ -1,5 +1,4 @@
-import React from 'react'
-import { useToast } from '@chakra-ui/core'
+import { useToast } from '@chakra-ui/react'
 
 export function Toast() {
   const toast = useToast()

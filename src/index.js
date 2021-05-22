@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import App from './components/App/index'
 import './static/styles/index.css'
 import { Provider } from 'react-redux'
-import { ThemeProvider } from '@chakra-ui/core'
+import { ChakraProvider } from '@chakra-ui/react'
 import { customTheme } from './theme'
 import store from './store/store'
 import axios from 'axios'
@@ -15,9 +15,9 @@ axios.defaults.baseURL =
 
 ReactDOM.render(
   <Provider store={store}>
-    <ThemeProvider theme={customTheme}>
+    <ChakraProvider theme={customTheme}>
       <App />
-    </ThemeProvider>
+    </ChakraProvider>
   </Provider>,
   document.getElementById('root')
 )
