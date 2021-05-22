@@ -39,7 +39,7 @@
     "@emotion/core": "^10.0.34",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
-    "apexcharts": "^3.16.1",
+    "apexcharts": "^3.24.0",
     "axios": "^0.19.2",
     "dateformat": "^3.0.3",
     "emotion-theming": "^10.0.27",
